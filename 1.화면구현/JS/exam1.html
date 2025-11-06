@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let ball = 25; //공이 25개 있음;
+        let box = 0; //박스의 개수;
+
+        //공의 개수가 4의 배수면 남는공이 없음
+        //공의 개수가 4의 배수가 아니면 박스가 한개 더 필요하다
+
+        box = (ball % 4 === 0) ? ball/4 : parseInt(ball / 4)+1;
+        console.log("박스의 개수 : " + box +"개");
+
+        let age = 21;
+        let ticketPrice = 12000;
+
+        //나이에 따라 티켓 가격이 출력되는 코드 작성하기
+        //학생은 20% 할인된 가격
+        //성인은 정가
+        let finalPrice = age > 19 ? ticketPrice : ticketPrice* 0.8;
+        console.log(`${age}살의 티켓 가격은 ${finalPrice}원 입니다.`)
+
+        //주문 금액이 30,000원 이상이거나 VIP회원이라면 무료배송이다.
+        //주문금액 : 28000
+        //vip : true
+        //무료배송인지 아닌지 예측하여 출력하세요
+        let orderPrice = 28000;
+        let isVIP = true;
+
+        //배달비를 내야되는지 여부
+        let isFree = (orderPrice >= 30000) || (isVIP === true);
+        console.log(isFree);
+
+        let temerature = 23;
+
+        let mode = (temerature >= 28) ? "에어컨 작동":(temerature <=18) ? "난방 작동" : "대기 상태";
+
+        console.log(mode);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
