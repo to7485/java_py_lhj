@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        let even = 0;
+        let odd = 0;
+
+        //1부터 28까지 순회
+        for(let i = 1; i<28; i++){
+            if(i % 2 === 0){
+                even++;
+            } else {
+                odd++;
+            }
+        }
+
+        console.log(`짝수 : ${even}, 홀수 : ${odd}`)
+
+        let x = 0;
+        while(x < 10){
+            x++;
+            if(x % 2 === 0){
+                continue;
+            }
+            console.log(`3 X ${x} = ${3*x}`);
+        }
+
+        let sum = 0; //총합을 담을 변수
+        let count = 0; //개수를 담을 변수
+        for(let i = 1; i <46; i++){
+            if(i % 3 === 0){
+                continue;
+            }
+            sum += i; //sum = sum + i;  sum = 0 + 1
+                      //                sum = 1 + 2
+                      //                sum = 3 + 4
+                      //                sum = 7 + 5
+                      //                    ...
+            count++; //개수 셀 때는 한개씩 세니까
+        }
+        console.log(`총합 : ${sum}`);
+        console.log(`평균 : ${sum/count}`);
+
+        let num = 12340;
+        let reversed = 0;
+
+        while(num > 0){
+            let digit = num % 10; //나머지(마지막 자리)
+            reversed = reversed*10 + digit;
+            num = parseInt(num / 10);
+        }
+
+        console.log(`뒤집은 숫자 : ${reversed}`);
+
+
+
+
+
+
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
