@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img id="dog_image"src="" width="300">
+    <button id="btn">이미지 가져오기</button>
+    <script>
+        let btn = document.querySelector("#btn");
+        let img = document.querySelector("#dog_image");
+        //1. 버튼을 눌렀을 때
+        btn.addEventListener("click", () => {
+            //2. https://dog.ceo/api/breeds/image/random -> 데이터좀 주세요
+            fetch("https://dog.ceo/api/breeds/image/random")
+                .then(res => {
+                    if(!res.ok){
+                        throw new Error("데이터 불러오기 실패"); //에러를 강제로 발생시킨다.
+                    }
+                    return res.json(); //json 형태로 변환
+                })
+                .then(data => {
+                    //3. 돌려받은 데이터에서 이미지 경로를 추출해서
+                    //4. img태그의 src에 넣는다.
+                    img.src=data.message;
+                })
+                .catch(err => {
+                    console.error("에러 : " + err);
+                    alert("데이터를 가져오는데 실패했다.");
+                })
+        })
+    </script>
+</body>
+</html>

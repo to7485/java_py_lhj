@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="advice"></p>
+    <button id="btn">명언 생성</button>
+    <script>
+        //1. 기능을 붙여주기 위한 태그를 선택
+        //버튼을 js에게 알려줌
+        let btn = document.querySelector("#btn");
+        
+        //클릭했을 때의 기능
+        function click(){
+            //명언주세요~
+            fetch("https://api.adviceslip.com/advice")
+                .then(res => { 
+                    if(!res.ok){ //요청이 잘 됐으면 true / false
+                        throw new Error("요청 실패")
+                    }
+                    return res.json(); //얻어온 결과를 json으로 변환해라
+                })
+                .then(data => {
+                    //p태그에 명언을 추출해서 넣는다.
+                    document.querySelector("#advice").innerText = data.slip.advice;
+                })
+                .catch(err => {
+                    console.error("에러:",err);
+                    alert("명언을 가져오는 데 실패했습니다.");
+                })
+        }
+
+        btn.addEventListener("click",click);
+    </script>
+</body>
+</html>
