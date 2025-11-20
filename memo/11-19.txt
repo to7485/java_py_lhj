@@ -82,15 +82,19 @@ CALL 프로시저명(값1,값2)
 
 
 
+애플 cpu를 인텔 -> m1, m2,m3,m4
 
 
+JDK(Jva Devlopment kit)
+
+JRE(Java Runtime Environment) 자바 실행 환경
+자바 프로그램을 실행하는데 필요한 코드들을 제공
+
+JVM(Java Virtual Machine)
+자바 프로그램을 실행해주는 프로그램
 
 
-
-
-
-
-
+eyunp
 
 
 
