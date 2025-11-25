@@ -48,6 +48,31 @@ public class ArrayExample2 {
 		//배열의 값이 순서 없이 저장되는 경우, 배열의 값을 오름차순으로 정렬해주세요
 		int[] arr2 = {1,6,2,10,5,8,4,3,9,7};
 		
+		int temp = 0;
+		
+		//버블정렬
+		for(int i = 0; i< arr2.length; i++) {
+			//배열의 요소를 순회하면서 정렬을 해준다.
+			for(int j = 0; j < i; j++) {
+				//앞의 값이 뒤의값보다 크다면
+				if(arr2[j] > arr2[j+1]) {
+					//두 변수의 값을 바꾸기
+					temp = arr2[j+1];
+					arr2[j+1] = arr2[j];
+					arr2[j] = temp;
+				}
+			}
+		}
+		
+		for(int i = 0; i< arr2.length; i++) {
+			System.out.println(arr2[i]);
+		}
+		
+		
+		
+		
+		
+		
 		
 		
 		
