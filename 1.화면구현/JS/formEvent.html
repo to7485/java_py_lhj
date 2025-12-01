@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label>
+        이름:
+        <input id="nameInput" name="name">
+    </label>
+    <br><br>
+    <label>
+        과일:
+        <select id="fruitSelect" name="fruit">
+            <option value="">선택하세요</option>
+            <option value="apple">사과</option>
+            <option value="banana">바나나</option>
+        </select>
+    </label>
+    <p id="log"></p>
+    <script>
+        const nameInput = document.querySelector("#nameInput");
+        const msg = document.querySelector("#log");
+        const fruitSelect = document.querySelector("#fruitSelect");
+
+        // nameInput.addEventListener("focus",function(){
+        //     msg.textContent = "이름 입력창에 포커스가 갔다."
+        // })
+
+        // nameInput.addEventListener("blur",function(){
+        //     msg.textContent = "이름 입력창에 포커스가 사라졌다."
+        // })
+
+        nameInput.addEventListener("change",() => {
+            msg.textContent = "값이 변했다."
+        })
+
+        //
+        fruitSelect.addEventListener("change", function(){
+            msg.textContent=`과일을 ${fruitSelect.value}로 변경했다.`
+        })
+        
+    </script>
+
+</body>
+</html>

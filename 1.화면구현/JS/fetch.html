@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="loadBtn">데이터 불러오기</button>
+    <p id="result"></p>
+
+    <script>
+        const btn = document.querySelector("#loadBtn");
+        const result = document.querySelector("#result");
+
+        btn.addEventListener("click",function(){
+            //요청(request) <-> 응답(response)
+            //fetch는 통신을 거부당해도 catch로 안간다.
+            //res.ok객체는 상태코드가 들어있다.
+            //res.ok에서 true가 되는 범위 200 ~ 299
+            //나머지는 false로 취급 400, 500
+            fetch("https://jsonplaceholder.typicode.com/posts")
+                .then(res => {
+                    if(!res.ok){
+                        throw new Error("서버에러")
+                    }
+                })//응답으로 돌려받은 데이터를 json타입으로 변경
+                .then(data => {
+                    console.log(data);
+                    result.textContent = `제목 : ${data[0].title},
+                    내용 : ${data[0].body}`;
+                })
+                .catch()
+
+                
+
+
+
+
+        })
+    </script>
+</body>
+</html>

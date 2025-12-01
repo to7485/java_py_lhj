@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="search" placeholder="검색어를 입력하세요">
+    <p id="preview"></p>
+
+    <script>
+        let input = document.querySelector("#search");
+        let preview = document.querySelector("#preview");
+
+        //keydown, keyup, kypress
+        //발생한 이벤트 정보가 매개변수로 들어온다.
+        input.addEventListener("keydown",function(event){
+            const value = event.key;
+            const realValue = event.target.value;
+            if(value === "Enter"){
+                preview.textContent = `검색어 : ${realValue}`
+            } else {
+                preview.textContent = "검색어를 입력해주세요"
+            }
+        })
+    </script>
+</body>
+</html>

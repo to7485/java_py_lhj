@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img id="photo" src="images/dog.jpg" alt="귀여운 강아지" width="150">
+    <button id="btn">이미지 속성 확인</button>
+    <p id="log"></p>
+
+    <ul>
+        <li class="product" data-product-id="101" data-price="15000">이어폰</li>
+        <li class="product" data-product-id="101" data-price="15000">이어폰</li>
+        <li class="product" data-product-id="101" data-price="15000">이어폰</li>
+        <li class="product" data-product-id="101" data-price="15000">이어폰</li>
+        <li class="product" data-product-id="101" data-price="15000">이어폰</li>
+        <li class="product" data-product-id="101" data-price="15000">이어폰</li>
+        <li class="product" data-product-id="101" data-price="15000">이어폰</li>
+        
+    </ul>
+    <script>
+        const img = document.querySelector("#photo");
+        const btn = document.querySelector("#btn");
+        const log = document.querySelector("#log");
+
+        btn.addEventListener("click",function(){
+            const src= img.getAttribute("src");
+            const alt = img.getAttribute("alt");
+            log.textContent = `src : ${src}, alt : ${alt}`
+        })
+    </script>
+</body>
+</html>

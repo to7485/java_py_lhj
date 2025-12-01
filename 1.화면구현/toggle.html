@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            padding : 20px;
+            transition : background 0.5s, color 0.5s;
+        }
+
+        .dark{
+            background : #1e1e1e;
+            color : #fff;
+            display:none;
+        }
+
+        .zz{
+            display:none;
+        }
+    </style>
+</head>
+<body>
+    <button id="theme-btn">다크모드 전환</button>
+    <div id="content" class="container item dark">
+        <h2>안녕하세요!</h2>
+        <p>이 텍스트는 테마에 따라 스타일이 달라집니다.</p>
+    </div>
+
+    <div id="xx" class="yy zz">
+        asdasd
+    </div>
+    <script>
+        const btn = document.querySelector("#theme-btn");
+        const content = document.querySelector("#content");
+
+        const box = document.querySelector("#xx");
+
+        btn.addEventListener("click",function(){
+            box.classList.toggle("zz");
+            // let display = box.style.display;
+            // if(display === "none"){
+            //     box.style.display = "block";
+            // } else {
+            //     box.style.display = "none";
+            // }
+            
+        })
+        
+    </script>
+</body>
+</html>

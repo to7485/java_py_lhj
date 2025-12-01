@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box" class="item active">박스</div>
+    <button id="btn">클래스 확인</button>
+    <p id="log"></p>
+
+    <script>
+        const box = document.querySelector("#box");
+        const btn = document.querySelector("#btn");
+        const log = document.querySelector("#log");
+
+        //대상태그.addEventListener("대상 이벤트", "이벤트 처리 함수")
+        btn.addEventListener("click",function(){
+            if(box.classList.contains("active")){
+                log.textContent = "active 클래스가 있습니다."
+            }
+        })
+
+
+
+    </script>
+</body>
+</html>
