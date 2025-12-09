@@ -2,6 +2,7 @@ package com.korea.layer.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -76,12 +77,9 @@ public class TodoController {
 			List<TodoEntity> entites = service.create(entity);
 			
 			
-			List<TodoDTO> dtos = new ArrayList<>();
-			
-			//리스트 안에 들어있는 TodoEntity를 TodoDTO 타입으로 변경해서 dtos에 넣는다.
-			for(TodoEntity e : entites) {
-				dtos.add(new TodoDTO(e));//entity를 dto로 바꿔서 리스트에 추가
-			}
+			List<TodoDTO> dtos = entites.stream()
+					.map(TodoDTO::new)
+					.collect(Collectors.toList());
 			
 			//builder패턴을 이용해서 dtos를 ResponseDTO에 담아서 ResponseEntity로 반환한다.
 			ResponseDTO<TodoDTO> response = ResponseDTO.<TodoDTO>builder().data(dtos).build();
@@ -109,14 +107,12 @@ public class TodoController {
 		String temporaryUserId = "temporary-user";
 		
 		//서비스레이어의 retrieve메서드를 이용해 Todo리스트를 반환받아 entities리스트에 저장한다.
-		List<TodoEntity> entities = service.retrieve(temporaryUserId);
+		List<TodoEntity> entites = service.retrieve(temporaryUserId);
 		
 		//List에 들어있는 Entity들을 DTO로 변환한다.
-		List<TodoDTO> dtos = new ArrayList<TodoDTO>();
-		
-		for(TodoEntity e : entities) {
-			dtos.add(new TodoDTO(e));
-		}
+		List<TodoDTO> dtos = entites.stream()
+				.map(TodoDTO::new)
+				.collect(Collectors.toList());
 		
 		//ResponseDTO객체에 담는다.
 		ResponseDTO<TodoDTO> response = ResponseDTO.<TodoDTO>builder().data(dtos).build();
@@ -148,13 +144,12 @@ public class TodoController {
 		//title : 수정하려고 하는 내용
 		//done : true
 		
-		List<TodoEntity> entities = service.update(entity);
+		List<TodoEntity> entites = service.update(entity);
 		
-		List<TodoDTO> dtos = new ArrayList<>();
-		
-		for(TodoEntity e : entities) {
-			dtos.add(new TodoDTO(e));
-		}
+		//List에 들어있는 Entity들을 DTO로 변환한다.
+		List<TodoDTO> dtos = entites.stream()
+				.map(TodoDTO::new)
+				.collect(Collectors.toList());
 		
 		ResponseDTO<TodoDTO> response = ResponseDTO.<TodoDTO>builder().data(dtos).build();
 		return ResponseEntity.ok().body(response);
@@ -182,13 +177,12 @@ public class TodoController {
 		//service로 넘기는 entity에 들어있는 것
 		//id
 		//userId
-		List<TodoEntity> entities = service.delete(entity);
+		List<TodoEntity> entites = service.delete(entity);
 		
-		List<TodoDTO> dtos = new ArrayList<>();
-		
-		for(TodoEntity e : entities) {
-			dtos.add(new TodoDTO(e));
-		}
+		//List에 들어있는 Entity들을 DTO로 변환한다.
+		List<TodoDTO> dtos = entites.stream()
+				.map(TodoDTO::new)
+				.collect(Collectors.toList());
 		
 		ResponseDTO<TodoDTO> response = ResponseDTO.<TodoDTO>builder().data(dtos).build();
 		return ResponseEntity.ok().body(response);
