@@ -117,7 +117,13 @@ CORS (Cross-Orign Resource Sharing) 설정을 컨트롤러 단위로 지정하�
 
 originPatterns = "*"
 모든 출처를 허용하겠다. -> "어느 도메인에서 오든 다 허용하겠다"
+allowCredentials = "false"
+자격증명을 CORS요청에 허용할지 여부를 설정하는 값이다.
 
+자격증명
+쿠키
+토큰
+인증서
 
 
 

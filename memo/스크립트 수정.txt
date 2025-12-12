@@ -1,0 +1,38 @@
+// 2. 상품 등록 처리 (POST /product) - apiFetch 사용 (수정 제안)
+async function handleAddItem(event) {
+    event.preventDefault();
+
+    const newProduct = {
+        productName: document.getElementById('productName').value,
+        productStock: parseInt(document.getElementById('productStock').value),
+        productPrice: parseInt(document.getElementById('productPrice').value)
+    };
+    
+    messageElement.textContent = '등록 중...';
+    messageElement.style.color = '#007bff';
+
+    try {
+        // POST 요청 시 method, headers, body 옵션을 명시하여 apiFetch 호출
+        // 서버가 전체 리스트를 반환하더라도, 이 응답은 단순히 성공 여부만 확인하는 용도로 사용하고,
+        // UI 업데이트는 다시 GET 요청을 통해 최신 전체 목록을 가져오는 것이 안전합니다.
+        await apiFetch('/product', {
+            method: 'POST',
+            headers: JSON_HEADERS,
+            body: JSON.stringify(newProduct)
+        });
+        
+        // ⭐️⭐️⭐️ 핵심 수정: 상품 등록 후, 전체 목록을 다시 조회하여 테이블을 갱신합니다. ⭐️⭐️⭐️
+        await fetchProducts(); 
+        
+        // 등록 성공 메시지 표시
+        addItemForm.reset();
+        // 등록된 상품의 이름은 newProduct 객체에서 가져와서 사용 (서버 응답을 분석할 필요 없음)
+        messageElement.textContent = `상품 "${newProduct.productName}"이(가) 등록되었습니다!`; 
+        messageElement.style.color = '#28a745';
+
+    } catch (error) {
+        // apiFetch에서 발생한 에러를 여기서 처리
+        messageElement.textContent = `오류: ${error.message}`;
+        messageElement.style.color = 'red';
+    }
+}

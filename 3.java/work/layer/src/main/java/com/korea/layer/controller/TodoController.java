@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -161,12 +162,15 @@ public class TodoController {
 	//임시유저 세팅
 	//삭제 후 전체조회를 해서 반환
 	//delete from Todo where id = ??
-	@DeleteMapping
-	public ResponseEntity<?> deleteTodo(@RequestBody TodoDTO dto){
+	@DeleteMapping("/{id}")
+	public ResponseEntity<?> deleteTodo(@PathVariable String id){
+		System.out.println("id : " + id);
 		String temporaryUserId = "temporary-user";
 		
-		TodoEntity entity = TodoDTO.toEntity(dto);
-		entity.setUserId(temporaryUserId);
+		TodoEntity entity = TodoEntity.builder()
+								.id(id)
+								.userId(temporaryUserId)
+								.build();
 		
 		//원래 entity에 들어가는것
 		//id

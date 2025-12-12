@@ -1,0 +1,33 @@
+12월 12일 스프링부트 
+CRUD
+2시간 10시 30분 ~ 12시 20분
+
+@RequestBody, @Pathvariable
+Optional 사용법
+
+@ManyToOne	N : 1	N측 엔티티가 1측 엔티티를 참조
+@OneToMany	1 : N	1측 엔티티가 N특 엔티티를 참조
+@OneToOne	1 : 1
+@ManyToMany	N : M
+
+Member N
+id
+userName
+@MayToOne 
+Team team
+
+Team 1
+long id
+String name;
+
+하나의 팀이 여러 멤버를 가질 수 있으니까
+팀에 속한 여러 멤버들을 표현하기 위해서 
+@OneToMany
+private List<Member> members = new ArrayList();
+
+
+
+
+
+
+

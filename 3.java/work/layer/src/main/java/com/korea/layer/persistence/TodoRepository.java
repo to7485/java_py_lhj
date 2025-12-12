@@ -3,6 +3,7 @@ package com.korea.layer.persistence;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.korea.layer.model.TodoEntity;
@@ -51,6 +52,7 @@ public interface TodoRepository extends JpaRepository<TodoEntity, String> {
 	
 	
 	//기본으로 제공하지 않는것들은 인터페이스에 추상메서드로 만들어서 사용해야한다.
+	//하이버네이터가 SQL로 만들어서 실행을 한다.
 	List<TodoEntity> findByUserId(String userId);
 	
 	
